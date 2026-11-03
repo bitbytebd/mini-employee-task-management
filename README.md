@@ -1,6 +1,6 @@
 # Mini Employee Task Management
 
-This workspace contains a Java 17 / Spring Boot 3 backend for employee task management.
+This workspace contains a Java 17 / Spring Boot 3 backend for employee task management. The Maven backend is located in `backend/`.
 
 Important: there was no AGENTS.md, CODEX_PROJECT_BLUEPRINT.md, or employer reference PDF present in this workspace, so this project was created directly from the task description without inventing additional requirements.
 
@@ -38,7 +38,8 @@ $env:JWT_SECRET = "change-me-to-a-long-random-secret"
 ## Run locally
 
 ```powershell
-& "C:\Users\Mousumi Akter\.m2\wrapper\dists\apache-maven-3.9.14\ed7edd442f634ac1c1ef5ba2b61b6d690b5221091f1a8e1123f5fadcc967520d\bin\mvn.cmd" spring-boot:run
+Set-Location backend
+mvn spring-boot:run
 ```
 
 ## Demo credentials
