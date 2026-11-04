@@ -103,10 +103,11 @@ See `docs/FIFO-Tech.postman_collection.json` and `docs/UML_DIAGRAMS.md` for subm
 
 The Postman collection is the recommended fallback for API verification. Screenshots and a demonstration video are not included in this repository.
 
-## Deployment preparation (not deployed)
+## Live deployment
 
-The repository includes `render.yaml` and `backend/Dockerfile` for a Docker-based Render backend. Render must receive these values through its secure environment-variable UI: `DB_HOST`, `DB_NAME`, `DB_USERNAME`, `DB_PASSWORD`, and `CORS_ALLOWED_ORIGINS`. The blueprint generates `JWT_SECRET`; do not replace it with a repository value. Set `DB_SSL_MODE=REQUIRED` for Aiven MySQL and create the `taskdb` database there. The application initializes its own non-destructive schema and creates demo users only when they are missing.
+- Frontend: [fifo-tech-frontend.pages.dev](https://fifo-tech-frontend.pages.dev)
+- Backend: [fifo-tech-backend.onrender.com](https://fifo-tech-backend.onrender.com)
 
-For Cloudflare Pages, use `frontend` as the root directory, run `npm install --no-audit --no-fund && npm run build:production`, and publish `dist/frontend`. The included Pages Function proxies `/api/*` to the `API_ORIGIN` environment variable; set it to the final Render backend origin (for example, `https://your-service.onrender.com`). Cloudflare Pages provides SPA route fallback by default. Set Render's `CORS_ALLOWED_ORIGINS` to the exact final Cloudflare Pages URL before testing browser access.
+The Angular frontend is hosted on Cloudflare Pages and proxies `/api/*` through its Pages Function. Its `API_ORIGIN` points to the Render backend. The backend uses Aiven MySQL with secure Render environment variables for database access and JWT signing; no database credentials or JWT secret are stored in this repository.
 
-No public deployment URL is configured by this repository. Creating cloud accounts, databases, or services requires separate authorization.
+The live integration was verified through the public Pages proxy: login for each role, administrator user management, manager direct-report task assignment, employee status updates, dashboard access, authorized PDF downloads, and employee authorization denials.
