@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface SessionUser { token: string; type: string; email: string; fullName: string; username: string; roles: string[]; }
 
@@ -10,7 +11,7 @@ export class AuthService {
   currentUser: SessionUser | null = this.read();
   constructor(private http: HttpClient) {}
   login(email: string, password: string): Observable<SessionUser> {
-    return this.http.post<SessionUser>('http://localhost:8080/api/auth/login', { email, password }).pipe(tap(user => {
+    return this.http.post<SessionUser>(`${environment.apiBaseUrl}/auth/login`, { email, password }).pipe(tap(user => {
       this.currentUser = user;
       localStorage.setItem(this.key, JSON.stringify(user));
     }));

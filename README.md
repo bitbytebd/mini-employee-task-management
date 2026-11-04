@@ -102,3 +102,11 @@ See `docs/FIFO-Tech.postman_collection.json` and `docs/UML_DIAGRAMS.md` for subm
 5. Confirm an employee cannot create tasks, view unrelated tasks, or download a PDF report.
 
 The Postman collection is the recommended fallback for API verification. Screenshots and a demonstration video are not included in this repository.
+
+## Deployment preparation (not deployed)
+
+The repository includes `render.yaml` and `backend/Dockerfile` for a Docker-based Render backend. Render must receive these values through its secure environment-variable UI: `DB_HOST`, `DB_NAME`, `DB_USERNAME`, `DB_PASSWORD`, and `CORS_ALLOWED_ORIGINS`. The blueprint generates `JWT_SECRET`; do not replace it with a repository value. Set `DB_SSL_MODE=REQUIRED` for Aiven MySQL and create the `taskdb` database there. The application initializes its own non-destructive schema and creates demo users only when they are missing.
+
+For Cloudflare Pages, use `frontend` as the root directory, run `npm install --no-audit --no-fund && npm run build:production`, and publish `dist/frontend`. The included Pages Function proxies `/api/*` to the `API_ORIGIN` environment variable; set it to the final Render backend origin (for example, `https://your-service.onrender.com`). Cloudflare Pages provides SPA route fallback by default. Set Render's `CORS_ALLOWED_ORIGINS` to the exact final Cloudflare Pages URL before testing browser access.
+
+No public deployment URL is configured by this repository. Creating cloud accounts, databases, or services requires separate authorization.

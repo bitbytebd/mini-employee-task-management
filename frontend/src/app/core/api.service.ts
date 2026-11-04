@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 export interface Page<T> { content: T[]; totalElements: number; totalPages: number; number: number; size: number; }
 export interface User { id: number; email: string; username: string; fullName: string; roles: string[]; enabled: boolean; managerId?: number; managerName?: string; }
 export interface Task { id: number; title: string; description?: string; status: string; priority: string; assigneeId: number; assigneeName: string; createdById: number; createdByName: string; deadline: string; }
 export interface DashboardStats { userCount: number; taskCount: number; pendingCount: number; inProgressCount: number; completedCount: number; }
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  private readonly baseUrl = 'http://localhost:8080/api';
+  private readonly baseUrl = environment.apiBaseUrl;
   constructor(private http: HttpClient) {}
   getDashboard(): Observable<DashboardStats> { return this.http.get<DashboardStats>(`${this.baseUrl}/dashboard/stats`); }
   users(page = 0, size = 100, search = ''): Observable<Page<User>> { return this.http.get<Page<User>>(`${this.baseUrl}/users`, { params: new HttpParams().set('page', page).set('size', size).set('search', search) }); }
