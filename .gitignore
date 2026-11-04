@@ -19,3 +19,6 @@ application-secret.yaml
 /README.zip
 .DS_Store
 Thumbs.db
+.project-*.pid
+backend-h2-demo.log
+angular-dev-server.log

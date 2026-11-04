@@ -17,4 +17,7 @@ public class UserSummaryDto {
     private String username;
     private String fullName;
     private Set<String> roles;
+    private boolean enabled;
+    private Long managerId;
+    private String managerName;
 }

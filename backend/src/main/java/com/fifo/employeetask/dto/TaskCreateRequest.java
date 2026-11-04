@@ -24,6 +24,7 @@ public class TaskCreateRequest {
     @NotNull(message = "Priority is required")
     private TaskPriority priority;
 
+    @NotNull(message = "Assignee is required")
     private Long assigneeId;
 
     @NotNull(message = "Deadline is required")

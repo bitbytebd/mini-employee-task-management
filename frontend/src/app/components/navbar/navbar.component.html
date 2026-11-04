@@ -1,0 +1,6 @@
+<header class="navbar">
+  <a class="brand" routerLink="/dashboard">FIFO TECH</a>
+  <span class="subtitle">Mini Employee &amp; Task Management</span>
+  <span class="user" *ngIf="auth.currentUser as user">{{ user.fullName }} ({{ auth.primaryRole() }})</span>
+  <button type="button" class="logout" (click)="logout()">Sign out</button>
+</header>

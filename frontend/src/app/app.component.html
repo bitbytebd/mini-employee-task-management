@@ -1,0 +1,6 @@
+<app-navbar *ngIf="auth.isLoggedIn()"></app-navbar>
+<main class="app-shell" *ngIf="auth.isLoggedIn(); else loginPage">
+  <app-sidebar></app-sidebar>
+  <div class="content"><router-outlet></router-outlet></div>
+</main>
+<ng-template #loginPage><router-outlet></router-outlet></ng-template>

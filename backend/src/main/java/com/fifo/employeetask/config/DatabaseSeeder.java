@@ -23,22 +23,22 @@ public class DatabaseSeeder {
         return args -> {
             seedUser("admin@fifo.local", "admin", "System Administrator", "admin123", Role.ADMIN, null);
             User manager = seedUser("manager@fifo.local", "manager", "Project Manager", "manager123", Role.MANAGER, null);
-            seedUser("employee1@fifo.local", "employee1", "Employee One", "employee123", Role.EMPLOYEE, manager);
-            seedUser("employee2@fifo.local", "employee2", "Employee Two", "employee123", Role.EMPLOYEE, manager);
+            seedUser("employee1@fifo.local", "emp1", "Employee One", "employee123", Role.EMPLOYEE, manager);
+            seedUser("employee2@fifo.local", "emp2", "Employee Two", "employee123", Role.EMPLOYEE, manager);
         };
     }
 
     private User seedUser(String email, String username, String fullName, String rawPassword, Role role, User manager) {
-        User user = userRepository.findByEmail(email).orElseGet(User::new);
-        user.setEmail(email);
-        user.setUsername(username);
-        if (user.getPassword() == null || !passwordEncoder.matches(rawPassword, user.getPassword())) {
+        return userRepository.findByEmail(email).orElseGet(() -> {
+            User user = new User();
+            user.setEmail(email);
+            user.setUsername(username);
             user.setPassword(passwordEncoder.encode(rawPassword));
-        }
-        user.setFullName(fullName);
-        user.setEnabled(true);
-        user.setRoles(Set.of(role));
-        user.setManager(manager);
-        return userRepository.save(user);
+            user.setFullName(fullName);
+            user.setEnabled(true);
+            user.setRoles(Set.of(role));
+            user.setManager(manager);
+            return userRepository.save(user);
+        });
     }
 }

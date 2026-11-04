@@ -1,0 +1,18 @@
+.sidebar {
+  width: 220px;
+  min-height: calc(100vh - 64px);
+  background: #0d2a4a;
+  padding: 1.5rem 1rem;
+}
+
+.nav-link {
+  display: block;
+  color: #dbeafe;
+  padding: .75rem 1rem;
+  border-radius: .4rem;
+  margin-bottom: .4rem;
+  text-decoration: none;
+}
+
+.nav-link.active, .nav-link:hover { background: #1e4d78; color: #fff; }
+.nav-link.disabled { opacity: .55; cursor: default; }

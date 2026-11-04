@@ -1,0 +1,11 @@
+.navbar {
+  align-items: center;
+  background: #071f3b;
+  color: #fff;
+  display: flex;
+  height: 64px;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.brand { color: #fff; font-size: 1.15rem; font-weight: 700; letter-spacing: .06em; text-decoration: none; }

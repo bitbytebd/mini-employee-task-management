@@ -1,0 +1,15 @@
+<section class="dashboard">
+  <div>
+    <p class="eyebrow">FIFO TECH</p>
+    <h1>Employee &amp; Task Management</h1>
+    <p class="lead">Your role-scoped work summary.</p>
+    <p class="error" *ngIf="error">{{ error }}</p>
+  </div>
+  <div class="cards">
+    <article class="stat-card"><span>Users / Team</span><strong>{{ stats?.userCount ?? '—' }}</strong></article>
+    <article class="stat-card"><span>Tasks</span><strong>{{ stats?.taskCount ?? '—' }}</strong></article>
+    <article class="stat-card"><span>Pending</span><strong>{{ stats?.pendingCount ?? '—' }}</strong></article>
+    <article class="stat-card"><span>In progress</span><strong>{{ stats?.inProgressCount ?? '—' }}</strong></article>
+    <article class="stat-card"><span>Completed</span><strong>{{ stats?.completedCount ?? '—' }}</strong></article>
+  </div>
+</section>

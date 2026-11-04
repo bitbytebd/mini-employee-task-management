@@ -1,0 +1,12 @@
+spring:
+  config:
+    activate:
+      on-profile: mysql
+  jpa:
+    hibernate:
+      ddl-auto: none
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+      data-locations: optional:classpath:disabled-mysql-data.sql

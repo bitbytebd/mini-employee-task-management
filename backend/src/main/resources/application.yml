@@ -2,9 +2,9 @@ spring:
   application:
     name: mini-employee-task-management
   datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:taskdb}?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC&characterEncoding=utf8mb4
-    username: ${DB_USERNAME:taskuser}
-    password: ${DB_PASSWORD:taskpass}
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:taskdb}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
