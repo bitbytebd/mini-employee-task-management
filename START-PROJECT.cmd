@@ -20,7 +20,7 @@ if errorlevel 1 (
     echo Frontend is already listening on port 4200.
 )
 
-echo Waiting for the frontend at http://localhost:4200/login ...
+echo Waiting for the frontend at http://localhost:4200/ ...
 for /l %%I in (1,1,36) do (
     powershell -NoProfile -ExecutionPolicy Bypass -Command "try { $response=Invoke-WebRequest -UseBasicParsing -Uri 'http://127.0.0.1:4200' -TimeoutSec 3; if($response.StatusCode -eq 200){exit 0} } catch {}; exit 1"
     if not errorlevel 1 goto :open_browser
@@ -28,13 +28,13 @@ for /l %%I in (1,1,36) do (
 )
 
 echo.
-echo ERROR: The frontend did not respond at http://localhost:4200/login within 3 minutes.
+echo ERROR: The frontend did not respond at http://localhost:4200/ within 3 minutes.
 echo Check the FIFO Frontend Demo window for the first startup error.
 exit /b 1
 
 :open_browser
-echo Frontend is ready. Opening the login page...
-start "" "http://localhost:4200/login"
+echo Frontend is ready. Opening the application...
+start "" "http://localhost:4200/"
 exit /b 0
 
 :port_open

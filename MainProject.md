@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains the backend foundation for a role-based employee and task management system. The active Spring Boot project is in `backend/`. A frontend has not been created yet.
+This repository contains a complete role-based employee and task management system. The Spring Boot backend is in `backend/` and the Angular 13 frontend is in `frontend/`.
 
 ## Technology Stack
 
@@ -13,6 +13,8 @@ This repository contains the backend foundation for a role-based employee and ta
 - Spring Security with JWT
 - MySQL 8 for runtime data
 - H2 for the existing integration-test profile
+- Angular 13, TypeScript, Reactive Forms, and HttpClient
+- Bootstrap 5
 
 ## Backend Package Structure
 
@@ -42,8 +44,14 @@ mvn test
 mvn spring-boot:run
 ```
 
-Set the required database and JWT environment variables before running against MySQL. The existing test profile uses H2.
+For the persistent MySQL mode, run `START-MYSQL-PROJECT.cmd` from the repository root. It requests database credentials securely for the current session and starts Spring Boot with the `mysql` profile. Then run `frontend\run-dev-server.cmd`.
+
+For a self-contained H2 demonstration, run `START-PROJECT.cmd`. Open `http://localhost:4200/` after the frontend reports ready.
+
+The MySQL schema is defined in `backend/src/main/resources/schema.sql` with non-destructive `CREATE TABLE IF NOT EXISTS` statements for `users`, `user_roles`, and `tasks`.
 
 ## Current Status
 
-The Spring Boot backend, JWT authentication, role-based authorization, basic user routes, and basic task routes are present. The backend API and test coverage are incomplete, MySQL schema compatibility is unverified, and no frontend has been created.
+The application includes JWT authentication, role-based authorization, scoped user/task APIs, dashboard statistics, PDF task reports, MySQL persistence, and an Angular UI with protected routes. The H2 integration suite covers authentication, administration, task authorization, dashboard, and reporting. The Postman collection and UML diagrams are under `docs/`.
+
+Latest verified release checks (4 November 2026): 21 Maven H2 tests passed and Maven package completed successfully. A real MySQL-backed Admin → Manager → Employee workflow, including PDF authorization and ownership restrictions, was verified through the running API.

@@ -22,3 +22,16 @@ Thumbs.db
 .project-*.pid
 backend-h2-demo.log
 angular-dev-server.log
+frontend/dist/
+GenerateBCrypt.java
+bcrypt-hashes.txt
+compile.cmd
+debug-tests.cmd
+generate-hashes.cmd
+mvn-ver.txt
+run-mvn.cmd
+run-tests.cmd
+smoke-test.txt
+test-maven.cmd
+test-output.txt
+test.cmd

@@ -53,7 +53,7 @@ The frontend calls `http://localhost:8080/api`; Spring CORS allows Angular's def
 
 ## H2 demonstration mode
 
-For a temporary H2-backed demonstration, double-click `START-PROJECT.cmd` in the project root. It opens separate backend and frontend CMD windows only when ports 8080 and 4200 are not already in use, waits for the frontend, then opens `http://localhost:4200/login`.
+For a temporary H2-backed demonstration, double-click `START-PROJECT.cmd` in the project root. It opens separate backend and frontend CMD windows only when ports 8080 and 4200 are not already in use, waits for the frontend, then opens `http://localhost:4200/`.
 
 Run `STOP-PROJECT.cmd` to stop only the server process trees that the launcher itself recorded. It never targets unrelated Node, Java, or MySQL processes. The H2 demonstration data is in-memory and resets when its backend window closes.
 
@@ -69,9 +69,9 @@ Keep the frontend running with `frontend\run-dev-server.cmd` or start it separat
 
 The application seeds four demo accounts:
 
-- Admin: `admin@fifo.local`
-- Manager: `manager@fifo.local`
-- Employees: `employee1@fifo.local`, `employee2@fifo.local`
+- Admin: `admin@fifo.local` / `admin123`
+- Manager: `manager@fifo.local` / `manager123`
+- Employees: `employee1@fifo.local`, `employee2@fifo.local` / `employee123`
 
 Passwords are seeded for local development only. Change or replace them before a real deployment.
 
@@ -92,3 +92,13 @@ Passwords are seeded for local development only. Change or replace them before a
 - `GET /api/reports/tasks/pdf` (administrator/manager scope)
 
 See `docs/FIFO-Tech.postman_collection.json` and `docs/UML_DIAGRAMS.md` for submission support material.
+
+## Interview demonstration
+
+1. Open `http://localhost:4200/` and sign in as the administrator.
+2. Create an employee and assign that employee to the manager.
+3. Sign in as the manager, create a task for a direct report, and view the manager dashboard/PDF report.
+4. Sign in as the employee, update the assigned task from `PENDING` to `IN_PROGRESS`, then confirm the manager sees the update.
+5. Confirm an employee cannot create tasks, view unrelated tasks, or download a PDF report.
+
+The Postman collection is the recommended fallback for API verification. Screenshots and a demonstration video are not included in this repository.
